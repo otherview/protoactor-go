@@ -225,7 +225,7 @@ func (p *AutoManagedProvider) monitorStatuses() {
 	defer clusterMonitorErrorMutex.Unlock()
 
 	autoManagedNodes, err := p.checkNodes()
-	if err != nil && len(autoManagedNodes) == 0 {
+	if err != nil {
 		plog.Error("Failure reaching nodes", log.Error(err))
 		p.clusterMonitorError = err
 		time.Sleep(p.refreshTTL)
